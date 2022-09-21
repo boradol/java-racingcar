@@ -11,7 +11,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class SetTest {
     private Set<Integer> numbers;
@@ -28,14 +28,14 @@ public class SetTest {
     @Test
     @DisplayName("요구사항1. Set의 크기 확인")
     void sizeTest() {
-        assertThat(numbers.size()).isEqualTo(3);
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1,2,3})
     @DisplayName("요구사항2. 1,2,3의 값이 존재하는지 확인")
     void containsTest(int input) {
-        assertThat(numbers.contains(input)).isTrue();
+        assertThat(numbers).contains(input);
     }
 
     @ParameterizedTest
@@ -44,6 +44,4 @@ public class SetTest {
     void matchContainsTest(int input, boolean expected) {
         assertThat(numbers.contains(input)).isEqualTo(expected);
     }
-
-
 }
